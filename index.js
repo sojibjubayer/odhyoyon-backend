@@ -54,7 +54,7 @@ app.post('/api/login', async (req, res) => {
         const user = await userCollection.findOne({ email, password });
 
         if (!user) {
-                return res.status(400).send({ message: 'no user found' });
+                return res.status(400).send({ message: 'admin not found' });
         }
 
         const token = jwt.sign({ id: user._id, email: user.email }, process.env.JWT_SECRET, { expiresIn: '12h' });
